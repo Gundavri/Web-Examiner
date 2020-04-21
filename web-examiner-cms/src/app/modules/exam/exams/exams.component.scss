@@ -1,0 +1,49 @@
+.wrapper-exam {
+    display: flex;
+    height: 3%;
+    padding: 5px;
+    width: 95%;
+    margin: 1.5% auto;
+    background-color: rgba(0, 0, 0, 0.03);
+    align-items: center;
+
+    .exam-info-very-small {
+        flex: 10;
+    }
+
+    .exam-info-small {
+        flex: 15;
+    }
+
+    .exam-info {
+        flex: 60;
+    }
+    
+    .exam-info-btn {
+        flex: 3;
+    }
+    
+    .status-text {
+        font-weight: bold;
+        margin-right: 5px;
+        display: inline-block;
+        transform: translateY(-5px);
+    }
+    
+    .exam-btn {
+        height: 15px;
+        width: 50px;
+        font-size: 10px;
+        line-height: 7px;
+    
+    }
+}
+
+.add-exam {
+    text-align: end;
+
+    .exam-btn-add {
+        margin-right: 2.5%;
+        margin-top: 1%;
+    }
+}

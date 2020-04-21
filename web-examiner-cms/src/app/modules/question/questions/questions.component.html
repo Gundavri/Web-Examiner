@@ -1,0 +1,21 @@
+<div class="add-question">
+    <mat-form-field>
+        <mat-label>Search Question</mat-label>
+        <input matInput placeholder="" type="text" (input)="onSearchChange(search.value)" #search>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="question-btn-add" (click)="onAdd()">Add question</button>
+</div>
+<div class="wrapper-question" *ngFor="let question of questionsToShow; let i=index">
+    <div class="question-info-very-small"><strong>Exam #</strong> {{ question.parent_exam_num }}</div>
+    <div class="question-info-small"><strong>Question:</strong> {{ question.question.substr(0, 70) }}</div>
+    <div class="question-info-btn img-btn" (click)="openImage(i)">Image</div>
+    <div class="question-info question-info-btn">
+        <button mat-raised-button color="primary" class="question-btn" (click)="onAnswers(i)">Answers</button>
+    </div>
+    <div class="question-info question-info-btn">
+        <button mat-raised-button color="accent" class="question-btn" (click)="onUpdate(i)">Update</button>
+    </div>
+    <div class="question-info question-info-btn">
+        <button mat-raised-button color="warn" class="question-btn" (click)="onDelete(i)">Delete</button>
+    </div>
+</div>

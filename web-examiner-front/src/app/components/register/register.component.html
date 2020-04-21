@@ -1,0 +1,48 @@
+<div class="form-wrapper background-clr">
+    <img src="../../../assets/images/login-avatar.jpg" alt="" class="form-img">
+    
+    <form [formGroup]="registerForm" (ngSubmit)="onRegisterFormSubmit()" class="register-form">
+    
+        <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username" placeholder="" type="text">
+    
+            <mat-error *ngIf="registerForm.controls.username.touched && registerForm.controls.username.invalid">
+                Invalid Input
+            </mat-error>
+        </mat-form-field>
+    
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" placeholder="Ex. pat@example.com" type="text">
+    
+            <mat-error *ngIf="registerForm.controls.email.touched && registerForm.controls.email.invalid">
+                Invalid Input
+            </mat-error>
+        </mat-form-field>
+    
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" placeholder="" type="password">
+    
+            <mat-error *ngIf="registerForm.controls.password.touched && registerForm.controls.password.invalid">
+                Password is Invalid
+            </mat-error>
+        </mat-form-field>
+    
+        <mat-form-field>
+            <mat-label>Confirm Password</mat-label>
+            <input matInput formControlName="confirmPassword" placeholder="" type="password">
+        </mat-form-field>
+        
+        <mat-error *ngIf="registerForm.controls.confirmPassword.touched && registerForm.value.confirmPassword !== registerForm.value.password" class="incorrect-auth-pass">
+            Passwords do not Match 
+        </mat-error>
+    
+        <mat-error *ngIf="errMsg" class="incorrect-auth-pass">
+            {{ errMsg }}
+        </mat-error>
+        <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">Register</button>
+        <div [routerLink]="['/login']" class="redirect-acc">Already have an Account?</div>
+    </form>
+</div>

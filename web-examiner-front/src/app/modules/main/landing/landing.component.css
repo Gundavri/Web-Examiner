@@ -1,0 +1,25 @@
+.wrapper-exams {
+    width: 95%;
+    min-width: 300px;
+    height: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.exam {
+    width: 8%;
+    min-width: 80px;
+    height: 10%;
+    min-height: 60px;
+    color: white;
+    background-color: #c60000;
+    margin: 0 5%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}

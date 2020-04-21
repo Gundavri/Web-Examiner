@@ -1,0 +1,45 @@
+<!-- <div class="wrapper">
+    <div class="header">
+        <div class="exam-num">Exam: #{{ route.snapshot.params.id }}</div>
+        <div class="question-num">{{ currentQuestion + 1 }} / {{ questionsArr.length }}</div>
+        <div class="timer">Score:</div>
+    </div>
+    <div class="question-wrapper" *ngFor="let question of questionsArr; let i=index">
+        <ng-container *ngIf="i === currentQuestion">
+            <div class="question"><strong>Question: </strong> {{ question.question }}</div>
+            <div class="question-img"><img [src]="question.question_img" alt="" *ngIf="question.question_img"></div>
+            <div class="answers">
+                <strong>Answers: </strong>
+                <div class="answer" *ngFor="let ans of question.answers; let j=index">
+                    {{ ans }}
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <div class="action-buttons">
+        <div class="previous">
+            <button mat-icon-button color="primary" (click)="previous()" [disabled]="currentQuestion === 0">
+                <mat-icon>arrow_back</mat-icon>
+            </button>
+        </div>
+        <div class="leave">
+            <button mat-button color="warn" (click)="leave()">Exit</button>
+        </div>
+        <div class="next">
+            <button mat-icon-button color="primary" (click)="next()" [disabled]="currentQuestion === questionsArr.length - 1">
+                <mat-icon>arrow_forward</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>  -->
+
+<div class="score-wrapper">
+    <div class="score">
+        <h2>
+            Score: {{ score }}
+        </h2>
+    </div>
+    <div class="leave">
+        <button mat-button color="warn" (click)="leave()">Exit</button>
+    </div>
+</div>

@@ -1,0 +1,165 @@
+.add-question {
+    display: flex;
+    justify-content: space-between;
+
+    mat-form-field {
+        margin-left: 10px;
+        margin-top: 1%;
+    }
+
+    .question-btn-add {
+        margin-right: 2.5%;
+        margin-top: 1%;
+    }
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+}
+
+.question-card {
+    position: relative;
+    width: 420px;
+    height: 635px;
+    margin: 5px;
+
+    .question-img > img {
+        display: block;
+        width: 40%;
+        max-height: 200px;
+        margin: 0 auto;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        transition: transform .2s;
+    }
+
+    .question-img > img:hover {
+        transform: scale(2.5);
+        z-index: 100;
+    }
+
+    mat-card-header {
+        display: block;
+    }
+
+    .exam-num {
+        margin: 0;
+    }
+
+    .question-question {
+        word-wrap: break-word;
+        width: 55%;
+        height: 200px;
+    }
+
+    mat-card-actions {
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+    }
+}
+
+// answers style
+mat-card-content {
+    position: absolute;
+    top: 35%;
+    left: 20px;
+    width: 100%;
+}
+
+.answer-header {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+
+    .titles {
+        display: flex;
+        text-align: center;
+        align-items: center;
+    }
+
+    .answer-title {
+        width: 185px;
+    }
+
+    .point-title {
+        width: 30px;
+        margin-left: 12px;
+    }
+
+    .img-title {
+        width: 30px;
+        margin-left: 35px;
+    }
+}
+
+.wrapper-answer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+    height: 55px;
+
+    .actions  {
+        margin-left: 20px;
+    }
+}
+
+.point {
+    width: 30px;
+}
+
+$input-file-color: grey;
+
+input[type=file] {
+  outline: 0;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.label {
+  width: 100%;
+  text-align: center;
+  height: 50px;
+  padding-top: 1%;
+  transition: border 300ms ease;
+  cursor: pointer;
+  text-align: center;
+  .title {
+    color: $input-file-color;
+    transition: 200ms color;
+  }
+  
+}
+
+.img-form-field {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    .label {
+        display: block;
+        width: 30px;
+        height: 30px;
+    }
+
+    img {
+        margin-left: 10px;
+        max-height: 30px;
+        max-width: 40px;
+        transition: transform .1s;
+    }
+    
+    img:hover {
+        z-index: 100;
+        transform: scale(8);
+    }
+
+    input {
+        display: none;
+    }
+}

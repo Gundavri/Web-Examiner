@@ -1,0 +1,86 @@
+.answer-header {
+    display: flex;
+    justify-content: space-between;
+
+    .titles {
+        display: flex;
+        text-align: center;
+        align-items: center;
+    }
+
+    .answer-title {
+        width: 185px;
+    }
+
+    .point-title {
+        width: 30px;
+        margin-left: 38px;
+    }
+
+    .img-title {
+        width: 30px;
+        margin-left: 42px;
+    }
+}
+
+.wrapper-answer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.point {
+    width: 30px;
+}
+
+$input-file-color: grey;
+
+input[type=file] {
+  outline: 0;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.label {
+  width: 100%;
+  text-align: center;
+  height: 50px;
+  padding-top: 1%;
+  transition: border 300ms ease;
+  cursor: pointer;
+  text-align: center;
+  .title {
+    color: $input-file-color;
+    transition: 200ms color;
+  }
+  
+}
+
+
+.img-form-field {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    .label {
+        display: block;
+        width: 30px;
+        height: 30px;
+    }
+
+    img {
+        margin-left: 10px;
+        max-height: 30px;
+        max-width: 40px;
+        z-index: 10;
+        transition: transform .1s;
+    }
+
+    img:hover {
+        transform: scale(5);
+    }
+
+    input {
+        display: none;
+    }
+}

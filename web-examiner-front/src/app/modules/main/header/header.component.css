@@ -1,0 +1,13 @@
+.wrapper-header {
+    font-size: 90%;
+}
+
+.email {
+    font-style: italic;
+}
+
+.logout {
+    text-align: end;
+    color: blue;
+    cursor: pointer;
+}

@@ -1,0 +1,14 @@
+<div class="wrapper">
+    <div class="sidebar">
+        <div *ngFor="let item of sidebarItems" class="sidebar-item" [routerLink]="item.link"
+            routerLinkActive="active-route">
+            <div class="sidebar-item-name">{{ item.name }}</div>
+            <div>
+                <mat-icon>{{ item.icon }}</mat-icon>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+</div>

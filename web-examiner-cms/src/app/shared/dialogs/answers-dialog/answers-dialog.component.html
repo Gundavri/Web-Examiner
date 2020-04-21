@@ -1,0 +1,48 @@
+<div class="answer-header">
+    <div class="titles">
+        <div class="answer-title">Answer</div>
+        <div class="point-title">Point</div>
+        <div class="img-title">Image</div>
+    </div>
+    <div class="add-wrapper">
+        <button mat-icon-button color="primary" (click)="addClicked = true"><mat-icon>add</mat-icon></button>
+    </div>
+</div>
+
+<div class="wrapper-answer" *ngFor="let answer of answers; let i=index">
+    <mat-form-field>
+        <textarea matInput placeholder="" type="text" [value]="answer.answer" #answerInput></textarea>
+    </mat-form-field>
+    <mat-form-field class="point">
+        <input matInput placeholder="" type="text" [value]="answer.point" #pointInput>
+    </mat-form-field>
+    <div class="img-form-field">
+        <img [src]="answer.answer_img" alt="">
+    </div>
+    <div class="actions">
+        <button mat-icon-button color="primary" (click)="onUpdate(i, answerInput.value, pointInput.value)"><mat-icon>save</mat-icon></button>
+        <button mat-icon-button color="warn" (click)="onDelete(i)"><mat-icon>clear</mat-icon></button>
+    </div>
+</div>
+
+<div class="wrapper-answer" *ngIf="addClicked">
+    <mat-form-field>
+        <textarea matInput placeholder="" type="text" #newAnswerInput></textarea>
+    </mat-form-field>
+    <mat-form-field class="point">
+        <input matInput placeholder="" type="text" #newPointInput>
+    </mat-form-field>
+    <div class="img-form-field">
+        <label class="label">
+          <span class="title">
+            <mat-icon>attachment</mat-icon>
+          </span>
+          <input type="file" (change)="onChange($event.target.files)">
+        </label>
+        <img [src]="imgSrc" alt="" *ngIf="imgSrc" class="popUp-image">
+    </div>
+    <div class="actions">
+        <button mat-icon-button color="primary" (click)="onNew(newAnswerInput.value, newPointInput.value)"><mat-icon>save</mat-icon></button>
+        <button mat-icon-button color="warn" (click)="onClear()"><mat-icon>clear</mat-icon></button>
+    </div>
+</div>

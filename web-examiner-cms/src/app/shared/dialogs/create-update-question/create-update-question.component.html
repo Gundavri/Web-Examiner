@@ -1,0 +1,26 @@
+<form [formGroup]="questionForm" (ngSubmit)="onSubmit()" class="question-form">
+
+    <mat-form-field>
+        <mat-label>Question</mat-label>
+        <textarea matInput formControlName="question" placeholder="" type="text" rows="5">
+        </textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Parent Exam</mat-label>
+        <input matInput formControlName="parent_exam_num" placeholder="" type="text">
+    </mat-form-field>
+
+    <div class="img-form-field">
+        <label class="label" *ngIf="!data.question">
+          <span class="title">
+            <mat-icon>attachment</mat-icon>
+          </span>
+          <input type="file" (change)="onChange($event.target.files)" formControlName="question_img">
+        </label>
+        <img [src]="imgSrc" alt="" *ngIf="imgSrc" class="popUp-image">
+    </div>
+
+    <button *ngIf="this.data && this.data.question" mat-raised-button color="primary" type="submit" [disabled]="questionForm.invalid">Update Question</button>
+    <button *ngIf="!this.data || (this.data && !this.data.question)" mat-raised-button color="primary" type="submit" [disabled]="questionForm.invalid">Create Question</button>
+</form>

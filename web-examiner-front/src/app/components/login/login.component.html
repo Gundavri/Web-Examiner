@@ -1,0 +1,30 @@
+<div class="form-wrapper background-clr">
+    <img src="../../../assets/images/login-avatar.jpg" alt="" class="form-img">
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLoginFormSubmit()" class="login-form">
+    
+        <mat-form-field>
+            <mat-label>Username or Email</mat-label>
+            <input matInput formControlName="username_email" placeholder="" type="text">
+    
+            <mat-error *ngIf="loginForm.controls.username_email.touched && loginForm.controls.username_email.invalid">
+                Invalid Input
+            </mat-error>
+        </mat-form-field>
+    
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" placeholder="" type="password">
+    
+            <mat-error *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid">
+                Password is Invalid
+            </mat-error>
+        </mat-form-field>
+    
+        <mat-error *ngIf="errMsg" class="incorrect-auth">
+            {{ errMsg }}
+        </mat-error>
+        <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>
+        <div [routerLink]="['/register']" class="redirect-acc">Create an Account</div>
+    </form>
+</div>

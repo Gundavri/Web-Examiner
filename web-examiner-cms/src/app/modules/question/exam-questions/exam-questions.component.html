@@ -1,0 +1,85 @@
+<div class="add-question">
+    <mat-form-field>
+        <mat-label>Search Question</mat-label>
+        <input matInput placeholder="" type="text" (input)="onSearchChange(search.value)" #search>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="question-btn-add" (click)="onQuestionAdd()">Add question</button>
+</div>
+
+<div class="wrapper">
+    <mat-card class="question-card" *ngFor="let question of questionsToShow; let i=index">
+        <mat-card-header>
+            <div class="exam-num">
+                <mat-form-field>
+                    <mat-label>Exam Num</mat-label>
+                    <input matInput type="number" [value]="question.parent_exam_num" #parentExamNumRef (input)="changeIsDisabled(parentExamNumRef.value, questionRef.value, i)">
+                </mat-form-field>
+            </div>
+            <div class="question-question">
+                <mat-form-field>
+                    <mat-label>Question</mat-label>
+                    <textarea matInput type="text" [value]="question.question" rows="8" #questionRef (input)="changeIsDisabled(parentExamNumRef.value, questionRef.value, i)"></textarea>
+                </mat-form-field>
+            </div>
+        </mat-card-header>
+        <div class="question-img">
+            <img *ngIf="question.question_img" mat-card-image [src]="question.question_img" alt="">
+        </div>
+        <mat-card-content>
+
+            <div class="answer-header">
+                <div class="titles">
+                    <div class="answer-title">Answer</div>
+                    <div class="point-title">Point</div>
+                    <div class="img-title">Image</div>
+                </div>
+                <div class="add-wrapper">
+                    <button mat-icon-button color="primary" (click)="addClicked[question._id] = true; lastAnswersParent = question._id"><mat-icon>add</mat-icon></button>
+                </div>
+            </div>
+            
+            <div class="wrapper-answer" *ngFor="let answer of answers[question._id]; let j=index">
+                <mat-form-field>
+                    <textarea matInput placeholder="" type="text" [value]="answer.answer" #answerInput></textarea>
+                </mat-form-field>
+                <mat-form-field class="point">
+                    <input matInput placeholder="" type="text" [value]="answer.point" #pointInput>
+                </mat-form-field>
+                <div class="img-form-field">
+                    <img [src]="answer.answer_img" alt="">
+                </div>
+                <div class="actions">
+                    <button mat-icon-button color="primary" (click)="onUpdate(j, answerInput.value, pointInput.value, question._id)"><mat-icon>save</mat-icon></button>
+                    <button mat-icon-button color="warn" (click)="onDelete(j, question._id)"><mat-icon>clear</mat-icon></button>
+                </div>
+            </div>
+            
+            <div class="wrapper-answer" *ngIf="addClicked[question._id]">
+                <mat-form-field>
+                    <textarea matInput placeholder="" type="text" #newAnswerInput></textarea>
+                </mat-form-field>
+                <mat-form-field class="point">
+                    <input matInput placeholder="" type="text" #newPointInput>
+                </mat-form-field>
+                <div class="img-form-field">
+                    <label class="label">
+                      <span class="title">
+                        <mat-icon>attachment</mat-icon>
+                      </span>
+                      <input type="file" (change)="onChange($event.target.files, question._id)">
+                    </label>
+                    <img [src]="imgSrc[question._id]" alt="" *ngIf="imgSrc[question._id]" class="popUp-image">
+                </div>
+                <div class="actions">
+                    <button mat-icon-button color="primary" (click)="onNew(newAnswerInput.value, newPointInput.value, question._id)"><mat-icon>save</mat-icon></button>
+                    <button mat-icon-button color="warn" (click)="onClear(question._id)"><mat-icon>clear</mat-icon></button>
+                </div>
+            </div>
+
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" class="question-btn" [disabled]="isDisabled[i]" (click)="onQuestionUpdate(i, parentExamNumRef.value, questionRef.value)">Save</button>
+          <button mat-raised-button color="warn" class="question-btn" (click)="onQuestionDelete(i)">Delete</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

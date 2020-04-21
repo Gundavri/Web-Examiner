@@ -1,0 +1,3 @@
+<mat-list class="wrapper-admins-users">
+    <app-user *ngFor="let user of usersList" [singleUser]="user" (deleteUser)="onDelete($event)"></app-user>
+</mat-list>

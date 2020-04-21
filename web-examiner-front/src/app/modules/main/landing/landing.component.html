@@ -1,0 +1,5 @@
+<div class="wrapper-exams">
+    <div class="exam" *ngFor="let exam of examService.getExams; let i=index" [ngStyle]="{'opacity': exam.is_active ? 1 : 0.3}" (click)="examClicked(i)">
+        <div class="title">Exam: #{{ exam.exam_num }}</div>
+    </div>
+</div>

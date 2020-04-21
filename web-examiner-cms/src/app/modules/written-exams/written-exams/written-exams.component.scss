@@ -1,0 +1,49 @@
+.wrapper-written-exam {
+    position: relative;
+    display: flex;
+    height: 3%;
+    padding: 5px;
+    width: 95%;
+    margin: 1.5% auto;
+    background-color: rgba(0, 0, 0, 0.03);
+    align-items: center;
+
+    .written-exam-info {
+        flex: 100;
+    }
+
+    .written-exam-info-small {
+        flex: 80;
+    }
+
+    .written-exam-info-very-small {
+        flex: 30;
+    }
+
+    .written-exam-info-btn {
+        flex: 8;
+        position: absolute;
+        right: 0;
+    }
+
+    .written-exam-btn {
+        height: 15px;
+        width: 25px;
+        font-size: 10px;
+        line-height: 7px;
+    }
+    
+    .status-text {
+        font-weight: bold;
+        margin-right: 5px;
+        display: inline-block;
+        transform: translateY(-5px);
+    }
+}
+
+.written-exam-header {
+    mat-form-field {
+        margin-left: 2.5%;
+        margin-top: 1%;
+    }
+}

@@ -1,0 +1,16 @@
+<div class="written-exam-header">
+    <mat-form-field>
+        <mat-label>Search...</mat-label>
+        <input matInput placeholder="" type="text" (input)="onSearchChange(search.value)" #search>
+    </mat-form-field>
+</div>
+<div class="wrapper-written-exam" *ngFor="let writtenExam of writtenExamsToShow; let i=index">
+    <div class="written-exam-info-very-small"><strong>Exam #:</strong> {{ writtenExam.exam_num }}</div>
+    <div class="written-exam-info-small"><strong>Username:</strong> {{ writtenExam.user.username }}</div>
+    <div class="written-exam-info-small"><strong>Email:</strong> {{ writtenExam.user.email }}</div>
+    <div class="written-exam-info-very-small"><strong>Score:</strong> {{ writtenExam.score }}</div>
+    <div class="written-exam-info"><strong>Date:</strong> {{ writtenExam.createDate | date }}</div>
+    <div class="written-exam-info written-exam-info-btn">
+        <button mat-raised-button color="warn" class="written-exam-btn" (click)="onDelete(i)">Delete</button>
+    </div>
+</div>

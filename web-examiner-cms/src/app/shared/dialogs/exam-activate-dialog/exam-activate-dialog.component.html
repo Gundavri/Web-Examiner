@@ -1,0 +1,17 @@
+<div class="dialog-confirm" >
+
+    <mat-form-field>
+        <mat-label>Exam Time</mat-label>
+        <input matInput placeholder="minutes" type="number" [(ngModel)]="examTime">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Questions Amount</mat-label>
+        <input matInput placeholder="" type="number" [(ngModel)]="questionsAmount">
+    </mat-form-field>
+    
+    <div class="dialog-confirm-bts">
+        <button mat-raised-button color="accent" (click)="onClick(true)">Yes</button>
+        <button mat-button (click)="onClick(false)">No</button>
+    </div>
+</div>

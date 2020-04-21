@@ -1,0 +1,42 @@
+.question-form {
+    width: 450px;
+    display: flex;
+    flex-flow: column;
+    position: absolute;
+    margin: 0 auto;
+
+    .popUp-image {
+        max-width: 438px;
+        max-height: 300px;
+        margin: 0 50%;
+        transform: translateX(-50%);
+    }
+
+    .form-btn {
+        width: 100%;
+    }
+}
+
+$input-file-color: grey;
+
+input[type=file] {
+  outline: 0;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.label {
+  width: 100%;
+  text-align: center;
+  height: 50px;
+  padding-top: 1%;
+  transition: border 300ms ease;
+  cursor: pointer;
+  text-align: center;
+  .title {
+    color: $input-file-color;
+    transition: 200ms color;
+  }
+  
+}

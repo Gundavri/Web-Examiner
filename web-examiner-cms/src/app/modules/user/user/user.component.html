@@ -1,0 +1,7 @@
+<div class="wrapper-user">
+    <div class="user-info"><strong>Username:</strong> {{ singleUser.username }}</div>
+    <div class="user-info"><strong>Email:</strong> {{ singleUser.email }}</div>
+    <div class="user-info user-info-delete">
+        <button mat-raised-button color="warn" class="user-delete-btn" (click)="onDelete()">Delete</button>
+    </div>
+</div>

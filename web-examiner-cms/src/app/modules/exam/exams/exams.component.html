@@ -1,0 +1,16 @@
+<div class="add-exam"><button mat-raised-button color="primary" class="exam-btn-add" (click)="onAdd()">Add Exam</button></div>
+<div class="wrapper-exam" *ngFor="let exam of examService.exams; let i=index">
+    <div class="exam-info-very-small"><strong>Exam #</strong> {{ exam.exam_num }}</div>
+    <div class="exam-info-small"><strong>Active:</strong> {{ exam.is_active }}</div>
+    <div class="exam-info-very-small"><strong>Time:</strong> {{ exam.exam_time }}</div>
+    <div class="exam-info-small"><strong>Questions Amount:</strong> {{ exam.questions_amount }}</div>
+    <div class="exam-info exam-info-btn">
+        <button mat-raised-button color="primary" class="exam-btn" (click)="onQuestions(i)">Questions</button>
+    </div>
+    <div class="exam-info exam-info-btn">
+        <button mat-raised-button color="accent" class="exam-btn" (click)="onUpdate(i)">Change</button>
+    </div>
+    <div class="exam-info exam-info-btn">
+        <button mat-raised-button color="warn" class="exam-btn" (click)="onDelete(i)">Delete</button>
+    </div>
+</div>
