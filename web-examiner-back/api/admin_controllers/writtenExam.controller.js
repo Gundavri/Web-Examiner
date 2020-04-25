@@ -6,7 +6,6 @@ module.exports.getAllWrittenExams = async (req, res, next) => {
     try {
         let writtenExamsToSend = [];
         let writtenExams = await WrittenExam.find();
-        console.log(writtenExams);
         for(let i=0; i<writtenExams.length; i++) {
             const user = await User.findById(writtenExams[i].userId);
             let tempWrittenExam = {
@@ -21,7 +20,6 @@ module.exports.getAllWrittenExams = async (req, res, next) => {
             }
             writtenExamsToSend.push(tempWrittenExam);
         }
-        console.log(writtenExamsToSend);
         res.status(200).json(writtenExamsToSend);
     } catch(err) {
         res.status(500).json({ message: 'Database error' });

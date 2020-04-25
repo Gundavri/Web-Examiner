@@ -15,7 +15,6 @@ module.exports.writtenExamGet = async (req, res, next) => {
         });
         res.status(200).json(arr);
     } catch(err) {
-        console.log(err);
         res.status(500).json({ message: 'Database error' });
     }
 }
@@ -38,7 +37,6 @@ module.exports.writtenExamPost = async (req, res, next) => {
         canWriteExam.deleteUser(req.userData.userId, req.body.exam_num);
         res.status(200).json(newObj);
     } catch (error) {
-        console.log(error);
         return res.status(500).json(error);
     }
 }

@@ -5,12 +5,10 @@ var timerObj = {};
 module.exports.startTimer = async (req, res, next) => {
     try {
         const exam = await Exam.findOne({ exam_num: req.params.id });
-        console.log('exam', exam);
         if(!timerObj.hasOwnProperty(req.userData.userId)) {
             timerObj[req.userData.userId] = {};
         }
         if(!timerObj[req.userData.userId].hasOwnProperty(exam.exam_num)) {
-            console.log('aaaaaaaaaaaaaaaaa');
             timerObj[req.userData.userId][exam.exam_num] = {
                 interval: null,
                 timeLeft: exam.exam_time * 60,

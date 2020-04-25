@@ -45,7 +45,6 @@ module.exports.addQuestion = async (req, res, next) => {
         if(req.file) {
             newQuestion['question_img'] = req.file.filename;
         }
-        console.log(newQuestion);
         const question = await newQuestion.save();
         if(req.body.parent_exam_num) {
             const parentExam = await Exam.findOne({ exam_num: req.body.parent_exam_num });
@@ -62,7 +61,6 @@ module.exports.addQuestion = async (req, res, next) => {
 
 module.exports.updateQuestion = async (req, res, next) => {
     try {
-        console.log(req.body);
         const question = await Question.findById(req.params.id);
         let setObj = { 
             $set: {
@@ -72,9 +70,7 @@ module.exports.updateQuestion = async (req, res, next) => {
         if(req.body.parent_exam_num && question.parent_exam_num !== req.body.parent_exam_num) {
             let oldExam = await Exam.findOne({ exam_num: question.parent_exam_num });
             if(oldExam) {
-                console.log(oldExam.questions);
                 oldExam.questions = oldExam.questions.filter(q => JSON.stringify(q) !== JSON.stringify(question._id));
-                console.log(oldExam.questions);
                 await Exam.updateOne({ exam_num: question.parent_exam_num }, { $set: { questions: oldExam.questions }});
             }
             let newExam = await Exam.findOne({ exam_num: req.body.parent_exam_num});
@@ -104,16 +100,13 @@ module.exports.deleteQuestion = async (req, res, next) => {
         for(let i=0; i<question.answers.length; i++) {
             const ans = await Answer.findById(question.answers[i]);
             if(ans.answer_img) {
-                console.log(ans);
                 const imgLocalPath = path.join(__dirname + `/../../public/images/${ans.answer_img}`);
-                console.log(imgLocalPath);
                 fs.unlinkSync(imgLocalPath);
             }
             await Answer.deleteOne({ _id: question.answers[i] });
         }
         if(question.question_img) {
             const imgLocalPath = path.join(__dirname + `/../../public/images/${question.question_img}`);
-            console.log(imgLocalPath);
             fs.unlinkSync(imgLocalPath);
         }
         await Question.deleteOne({ _id: req.params.id });

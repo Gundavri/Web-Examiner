@@ -37,7 +37,6 @@ module.exports.questionGet = async (req, res, next) => {
             examForUser[req.userData.userId][req.params.id] = arr;
         }
         arr = examForUser[req.userData.userId][req.params.id];
-        console.log(examForUser);
         const questions = await Question.find({$or : arr});
         const processedQuestions = await foreachQuestion(questions);
         setTimeout(async () => {
@@ -56,7 +55,6 @@ module.exports.questionGet = async (req, res, next) => {
         }, exam.exam_time * 60 * 1000 + 5000);
         res.status(200).json(processedQuestions);
     } catch(err) {
-        console.log(err);
         res.status(500).json({message: 'Database Error'});
     }
 }
