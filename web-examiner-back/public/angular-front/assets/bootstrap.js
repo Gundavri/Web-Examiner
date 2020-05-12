@@ -1,6 +1,6 @@
 (function (window) {
     //  Change this string to public ip
-    const PUBLIC_IP = '----------';
+    const PUBLIC_IP = '---------';
     //----------------------------
     window.bootstrapSettings = {
         production: true,

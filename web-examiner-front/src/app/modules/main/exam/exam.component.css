@@ -35,6 +35,7 @@
 
 .question {
     font-size: 18px;
+    word-wrap: break-word;
 }
 
 .question-img{
@@ -42,17 +43,21 @@
 }
 
 .question-img img {
+    position: relative;
     display: block;
     margin: 0 auto;
     width: 25%;
     transition: transform .2s;
+    z-index: 5;
 }
 
 .question-img img:hover {
-    transform: scale(3); 
+    transform: scale(2.5); 
+    z-index: 100;
 }
 
 .answers {
+    z-index: 0;
     position: absolute;
     top: 45%;
     width: 100%;
@@ -60,21 +65,29 @@
 }
 
 .answer {
+    position: relative;
     background-color: rgba(0,0,0,0.02);
     width: 100%;
     margin-top: 5px;
     display: flex;
-    justify-content: space-between;
+    word-wrap: break-word;
+}
+.ans-text {
+    width: 80%;
+    margin-left: 4px;
 }
 
 .ans-img img {
+    position: absolute;
+    right: 0;
     display: block;
     height: 20px;
     transition: transform .2s;
 }
 
 .ans-img img:hover {
-    transform: scale(9) translateX(-20px);
+    transform: scale(8) translateX(-43%);
+    z-index: 100;
 }
 
 .action-buttons {

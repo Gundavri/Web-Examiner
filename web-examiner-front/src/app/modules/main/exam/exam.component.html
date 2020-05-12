@@ -14,8 +14,8 @@
                 <strong>Answers: </strong>
                 <div class="answer" *ngFor="let ans of question.answers; let j=index">
                     <mat-checkbox class="answer-checkbox" color="primary" [(ngModel)]="currentAnswers[j]">
-                        <div class="ans-text">{{ ans.answer }}</div>
                     </mat-checkbox>
+                    <div class="ans-text">{{ ans.answer }}</div>
                     <div class="ans-img"><img [src]="ans.answer_img" alt=""></div>
                 </div>
             </div>

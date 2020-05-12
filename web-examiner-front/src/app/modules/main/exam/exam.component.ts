@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { ExamService } from 'src/app/core/services/exam.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, interval } from 'rxjs';
@@ -15,6 +15,15 @@ import { DialogService } from 'src/app/core/services/dialog.service';
   styleUrls: ['./exam.component.css']
 })
 export class ExamComponent implements OnInit, OnDestroy {
+
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    if(event.code === 'ArrowRight' && this.currentQuestion !== this.questionsArr.length - 1) {
+      this.next();
+    } else if(event.code === 'ArrowLeft' && this.currentQuestion !== 0) {
+      this.previous();
+    }
+  }
  
   exam: ExamRes
   questionsArr: QuestionRes[] = [];
