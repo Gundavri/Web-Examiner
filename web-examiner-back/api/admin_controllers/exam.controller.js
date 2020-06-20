@@ -8,6 +8,7 @@ module.exports.getExams = async (req, res, next) => {
         const exams = await Exam.find();
         res.status(200).json(exams);
     } catch(err) {
+        console.log(err);
         res.status(500).json({ message: 'Database error' });
     }
 };
@@ -19,6 +20,7 @@ module.exports.addExam = async (req, res, next) => {
         });
         res.status(200).json(exam);
     } catch(err) {
+        console.log(err);
         res.status(500).json({ message: 'Database error' });
     }
 };
@@ -37,6 +39,7 @@ module.exports.updateExam = async (req, res, next) => {
         await Exam.updateOne({ _id: req.params.id }, setObj);
         res.status(200).json({ message: 'Successfuly updated'} );
     } catch(err) {
+        console.log(err);
         res.status(500).json({ message: 'Database error' });
     }
 };
@@ -56,6 +59,7 @@ module.exports.deleteExam = async (req, res, next) => {
         await Exam.deleteOne({ _id: req.params.id });
         res.status(200).json({ message: 'Successfuly deleted' });
     } catch(err) {
+        console.log(err);
         res.status(500).json({ message: 'Database error' });
     }
 }

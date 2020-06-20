@@ -55,6 +55,7 @@ module.exports.questionGet = async (req, res, next) => {
         }, exam.exam_time * 60 * 1000 + 5000);
         res.status(200).json(processedQuestions);
     } catch(err) {
+        console.log(err);
         res.status(500).json({message: 'Database Error'});
     }
 }
@@ -66,12 +67,16 @@ async function findAnswers(answerIds, question) {
         for(let i = 0; i < answerIds.length; i++){
             try {
                 let answer =  await Answer.findById(answerIds[i]);
-                arr.push({
-                    answer: answer.answer,
-                    answer_img: answer.answer_img
-                });
-                idArr.push(answer._id);
+                console.log(answer);
+                if(answer) {
+                    arr.push({
+                        answer: answer.answer,
+                        answer_img: answer.answer_img
+                    });
+                    idArr.push(answer._id);
+                }
             } catch (error) {
+                console.log(error);
                 rej(error);
             }
         }
@@ -93,6 +98,7 @@ async function foreachQuestion(questions) {
                 let obj = await findAnswers(questions[i].answers, questions[i]);
                 arr.push(obj);
             } catch (error) {
+                console.log(error);
                 rej(error);
             }
         }
@@ -115,6 +121,7 @@ async function createMail(writtenExam) {
             }
             res(newObj);
         } catch (error) {
+            console.log(error);
             rej(error);
         }
     });
@@ -141,6 +148,7 @@ async function createMailBody(writtenExam) {
             html += "<h3> Your score: " + score + "</h3>";
             res(html);
         } catch (error) {
+            console.log(error);
             rej(error);
         }
     });
@@ -159,6 +167,7 @@ async function getAnswers(answerIds) {
             }
             res(arr);
         } catch (error) {
+            console.log(error);
             rej(error);
         }
     });
@@ -179,6 +188,7 @@ async function getQuestions(questionIds) {
             }
             res(arr);
         } catch (error) {
+            console.log(error);
             rej(error);
         }
     });
@@ -194,6 +204,7 @@ async function getAnswersArrs(answersIds) {
             }
             res(arr);
         } catch (error) {
+            console.log(error);
             rej(error);
         }
     });
@@ -228,6 +239,7 @@ async function getImages(writtenExam) {
             }
             res(arr);
         } catch (error) {
+            console.log(error);
             rej(error);
         }
     });

@@ -15,6 +15,7 @@ module.exports.getUsers = async (req, res, next) => {
         }
         res.status(200).json(users);
     } catch(err) {
+        console.log(err);
         res.status(500).json({ message: 'Database error' });
     }
 }
@@ -25,6 +26,7 @@ module.exports.deleteUser = async (req, res, next) => {
         await User.deleteOne({ _id: req.params.id });
         res.status(200).json({ message: 'Successfuly deleted' });
     } catch(err) {
+        console.log(err);
         res.status(500).json({ message: 'Database error' });
     }
 }

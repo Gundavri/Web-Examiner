@@ -52,6 +52,7 @@ module.exports.userRegister = (req, res, next) => {
         }).catch(err => {
             if(err.errmsg && err.errmsg.includes('duplicate')) return res.status(400).json({message: 'Username or Email is already taken'});
             else if(err.name === 'ValidationError') return res.status(500).json({message: err._message});
+            console.log(err);
             res.status(500).json({message: 'Database Error'});
         });
     });

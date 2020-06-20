@@ -13,6 +13,7 @@ module.exports.getAllQuestions = async (req, res, next) => {
         const question = await Question.find();
         res.status(200).json(question);
     } catch(err) {
+        console.log(err);
         res.status(500).json({ message: 'Database error' });
     }
 };
@@ -22,6 +23,7 @@ module.exports.getQuestion = async (req, res, next) => {
         const question = await Question.findById(req.params.id);
         res.status(200).json(question);
     } catch(err) {
+        console.log(err);
         res.status(500).json({ message: 'Database error' });
     }
 };
@@ -32,6 +34,7 @@ module.exports.getQuestions = async (req, res, next) => {
         const questions = await Question.find({ _id: { $in: exam.questions }});
         res.status(200).json(questions);
     } catch(err) {
+        console.log(err);
         res.status(500).json({ message: 'Database error' });
     }
 };
@@ -55,6 +58,7 @@ module.exports.addQuestion = async (req, res, next) => {
         }
         res.status(200).json(question);
     } catch(err) {
+        console.log(err);
         res.status(500).json({ message: 'Database error' });
     }
 };
@@ -83,6 +87,7 @@ module.exports.updateQuestion = async (req, res, next) => {
         await Question.updateOne({ _id: req.params.id }, setObj);
         res.status(200).json({ message: 'Successfuly updated'} );
     } catch(err) {
+        console.log(err);
         res.status(500).json({ message: 'Database error' });
     }
 };
@@ -112,6 +117,7 @@ module.exports.deleteQuestion = async (req, res, next) => {
         await Question.deleteOne({ _id: req.params.id });
         res.status(200).json({ message: 'Successfuly deleted' });
     } catch(err) {
+        console.log(err);
         res.status(500).json({ message: 'Database error' });
     }
 };
